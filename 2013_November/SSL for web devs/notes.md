@@ -89,21 +89,36 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
 ## More details
 
 * Basic: [Nginx/StartSSL specific guide][14]
-* Advanced: [Mozilla Security/Server Side TLS Guidelines][15]
-* Advanced: [Hardening your SSL ciphers][16].
-  TL;DR:
+* Advanced: [Mozilla Security/Server Side TLS Guidelines][15].
 
-        ssl_prefer_server_ciphers On;
+        ssl_prefer_server_ciphers on;
         ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-        ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!AECDH:!MD5:!DSS;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:
+             ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:kEDH+AESGCM:
+             ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:
+             ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:
+             ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:
+             DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:
+             DHE-DSS-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:
+             ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:RC4-SHA:HIGH:
+             !aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
+
+* Advanced: [CloudFlare: Staying on top of TLS attacks][16]. Also read about "Forward Secrecy".
+
+        ssl_prefer_server_ciphers on;
+        ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-RC4-SHA:
+            ECDHE-RSA-AES128-SHA:AES128-GCM-SHA256:RC4:HIGH:
+            !MD5:!aNULL:!EDH:!CAMELLIA;
         
-* Advanced: [Overview – RSA and Elliptic Curve Cryptography][17]
-* Advanced: [Forward Key Secrecy][18]: Needs DHE or ECDHE algorithms
-* Expert: [Improving SSL performance][19]
+* Expert: [Overview – RSA and Elliptic Curve Cryptography][17]
+    * breaking 228-bit RSA key: energy of boiling teaspoon of water.
+    * breaking 228-bit ECC key: energy of boiling all water on earth.
+    * short, fast and secure keys (256-bit ECC key comparable to 2.058-bit RSA key, but 20x faster).
+* Expert: [Improving SSL performance][18]
 
 [14]: http://www.westphahl.net/blog/2012/01/03/setting-up-https-with-nginx-and-startssl/
 [15]: https://wiki.mozilla.org/Security/Server_Side_TLS
-[16]: https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
+[16]: http://blog.cloudflare.com/staying-on-top-of-tls-attacks
 [17]: http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/
-[18]: https://www.imperialviolet.org/2013/06/27/botchingpfs.html
-[19]: https://www.imperialviolet.org/2010/06/25/overclocking-ssl.html
+[18]: https://www.imperialviolet.org/2010/06/25/overclocking-ssl.html
