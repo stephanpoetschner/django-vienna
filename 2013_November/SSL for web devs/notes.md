@@ -90,7 +90,13 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
 
 * Basic: [Nginx/StartSSL specific guide][14]
 * Advanced: [Mozilla Security/Server Side TLS Guidelines][15]
-* Advanced: [Hardening your SSL ciphers][16]
+* Advanced: [Hardening your SSL ciphers][16].
+  TL;DR:
+
+        ssl_prefer_server_ciphers On;
+        ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!AECDH:!MD5:!DSS;
+        
 * Advanced: [Overview – RSA and Elliptic Curve Cryptography][17]
 * Advanced: [Forward Key Secrecy][18]: Needs DHE or ECDHE algorithms
 * Expert: [Improving SSL performance][19]
