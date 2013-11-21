@@ -49,7 +49,7 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
       must only be accessed with ssl.
       (`Strict-Transport-Security: max-age=31536000; includeSubDomains`)
     * You could even contact browser vendors and add your HSTS policy to
-      their [predefined list][9]
+      their [predefined list][9].
 
 [5]: https://startssl.com
 [6]: https://www.ssllabs.com/ssltest/analyze.html
