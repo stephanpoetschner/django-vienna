@@ -15,7 +15,7 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
     * Hide your login credentials! [2nd most common attack vector][1]
     * Ever accessed your Django-Admin interface at a conference using the wireless network.
 
-* It's your job. Leverage security by simply switching SSL on.
+* It's your job! Leverage security by simply switching SSL on.
     * APIs for partners or mobile applications?
     * Making Man-In-the-Middle Attacks much harder.
     * It's a sane default.
