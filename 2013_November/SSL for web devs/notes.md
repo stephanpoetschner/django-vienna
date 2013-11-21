@@ -61,6 +61,7 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
 
 (most of them personally tested, while working on an API for mobile clients)
 
+* Not enought testing! [Qualsys SSL lab test][6]
 * Not including complete certificate chain.
     * Your desktop browser might download missing intermediate certificates.
     * Intermediate certificates might already be cached from other sites at your machine.
