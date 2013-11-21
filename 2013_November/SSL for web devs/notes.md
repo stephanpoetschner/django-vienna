@@ -4,23 +4,24 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
 
 ## Why?
 
-* Hide your user's traffic
-    * Might be on Wireless LAN.
-    * Might be at work and look at new job offers.
+* Protect our users!
+    * Might be on insecure network (Wireless LAN).
+    * Might look at sensitive data (being at work and look at new job offers).
+    * Users tend to reuse their (weak) passwords over and over.
     * Traffic might be logged by third party (by the employer, by the provider,
       by the NSA, ...). As processing power increases, logged traffic might be decrypted.
 
-* Hide your login credentials! [2nd most common attack vector][1]
-    * Django-Admin interface? Imaginge you logging in at a conference using the local wireless.
-    * Your login-page? Users tend to reuse their (weak) passwords over and over.
-    * Your mobile Application? Leverage your API security by simply switching SSL on.
+* Protect yourself!
+    * Hide your login credentials! [2nd most common attack vector][1]
+    * Ever accessed your Django-Admin interface at a conference using the wireless network.
 
-* Making Man-In-the-Middle Attacks much harder.
-
-* It's a sane default.
-    * [EFF recommends it.][2]
-    * [Google Search sets SSL for logged-in users as default.][3]
-    * [Facebook is doing it too][4]
+* It's your job. Leverage security by simply switching SSL on.
+    * APIs for partners or mobile applications?
+    * Making Man-In-the-Middle Attacks much harder.
+    * It's a sane default.
+        * [EFF recommends it.][2]
+        * [Google Search sets SSL for logged-in users as default.][3]
+        * [Facebook is doing it too][4]
 
 [1]: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management
 [2]: https://www.eff.org/https-everywhere/deploying-https
