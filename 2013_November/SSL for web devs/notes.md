@@ -1,6 +1,6 @@
 # Practical SSL for web devs
 
-Disclaimer: I am no security expert – just my personal experience with ssl.
+Disclaimer: I am no security expert. Any improvements/recommendations highly appreciated.
 
 ## Why?
 
@@ -8,12 +8,12 @@ Disclaimer: I am no security expert – just my personal experience with ssl.
     * Might be on Wireless LAN.
     * Might be at work and look at new job offers.
     * Traffic might be logged by third party (by the employer, by the provider,
-      by the NSA, ...)
+      by the NSA, ...). As processing power increases, logged traffic might be decrypted.
 
 * Hide your login credentials! [2nd most common attack vector][1]
-    * Django-Admin interface
-    * Your login-page
-    * Your mobile Application
+    * Django-Admin interface? Imaginge you logging in at a conference using the local wireless.
+    * Your login-page? Users tend to reuse their (weak) passwords over and over.
+    * Your mobile Application? Leverage your API security by simply switching SSL on.
 
 * Making Man-In-the-Middle Attacks much harder.
 
@@ -63,26 +63,27 @@ Disclaimer: I am no security expert – just my personal experience with ssl.
 
 * Not including complete certificate chain.
     * Your desktop browser might download missing intermediate certificates.
-    * Intermediate certificates might already be cached from other sites.
+    * Intermediate certificates might already be cached from other sites at your machine.
 * If you are providing an API, your mobile applications might not automatically
-  follow your graceful redirects.
-* HTTP compression might be disabled due to BREACH attack.
+  follow your graceful redirects from HTTP to HTTPS.
+* Compression might/should be disabled due to possible information leakage.
+    * SSL compression should be disabled: [CRIME attack][10]. Protecting your session cookie. 
+      nginx disables [SSL compression by default][11].
+    * HTTP compression should also be disabled – [following your Django advice][12]. 
+      This will protect your CSRF tokens.
 * Using Server Name Indication (SNI – SSL without dedicated IP address)
-  will work for Android 2.3+
-  (except when mobile developers use Apache HTTP Client library).
+  will work for [Android][13] 2.3+ – except when mobile developers use Apache HTTP Client library.
 * Enforcing certificate validation.
   Your server-to-server calls might not validate SSL certificates:
     * Python 2.x: `urllib.urlopen`
       When opening HTTPS URLs, it does not attempt to validate the server certificate. Use at your own risk!
-    * Use [`requests`-library][10]!
-* SSL compression should be disabled: [CRIME attack][11]. Protecting your session cookie.
-    * nginx disables [SSL compression by default][12]
-* HTTP compression should be disabled. [Protecting CSRF tokens][13].
+    * Use [`requests`-library][14]!
 
-[10]: http://www.python-requests.org/en/latest/
-[11]: http://security.stackexchange.com/questions/19911/crime-how-to-beat-the-beast-successor
-[12]: https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
-[13]: http://nginx.org/en/CHANGES
+[10]: http://security.stackexchange.com/questions/19911/crime-how-to-beat-the-beast-successor
+[11]: https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
+[12]: http://nginx.org/en/CHANGES
+[13]: http://developer.android.com/training/articles/security-ssl.html
+[14]: http://www.python-requests.org/en/latest/
 
 
 ## More details
