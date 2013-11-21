@@ -38,7 +38,10 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
   at your front-end webserver (nginx, apache).
 * Run [Qualsys SSL lab test][6].
 * Customize [Django-Settings][7].
-    * `SECURE_PROXY_SSL_HEADER`: making request.is_secure() work.
+    * `SECURE_PROXY_SSL_HEADER`: making `request.is_secure()` work.
+    
+            SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
     * Set `SESSION_COOKIE_SECURE` and `CSRF_COOKIE_SECURE` to `True`.
       Basically disabling Cookies for HTTP. Otherwise could be leaked.
 * Customize [frontend-server][8]
@@ -79,7 +82,7 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
   Your server-to-server calls might not validate SSL certificates:
     * Python 2.x: `urllib.urlopen`
       When opening HTTPS URLs, it does not attempt to validate the server certificate. Use at your own risk!
-    * Use [`requests`-library][14]!
+    * Use [`requests`-library][14]! (`verify=True` (default) or at least manually add certificate to trust chain!)
 
 [10]: http://security.stackexchange.com/questions/19911/crime-how-to-beat-the-beast-successor
 [11]: https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
@@ -90,8 +93,8 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
 
 ## More details
 
-* Basic: [Nginx/StartSSL specific guide][14]
-* Advanced: [Mozilla Security/Server Side TLS Guidelines][15].
+* Basic: [Nginx/StartSSL specific guide][15]
+* Advanced: [Mozilla Security/Server Side TLS Guidelines][16].
 
         ssl_prefer_server_ciphers on;
         ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
@@ -105,7 +108,7 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
              ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:RC4-SHA:HIGH:
              !aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
 
-* Advanced: [CloudFlare: Staying on top of TLS attacks][16]. Also read about "Forward Secrecy".
+* Advanced: [CloudFlare: Staying on top of TLS attacks][17]. Also read about "Forward Secrecy".
 
         ssl_prefer_server_ciphers on;
         ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
@@ -113,14 +116,14 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
             ECDHE-RSA-AES128-SHA:AES128-GCM-SHA256:RC4:HIGH:
             !MD5:!aNULL:!EDH:!CAMELLIA;
         
-* Expert: [Overview – RSA and Elliptic Curve Cryptography][17]
+* Expert: [Overview – RSA and Elliptic Curve Cryptography][18]
     * breaking 228-bit RSA key: energy of boiling teaspoon of water.
     * breaking 228-bit ECC key: energy of boiling all water on earth.
     * short, fast and secure keys (256-bit ECC key comparable to 2.058-bit RSA key, but 20x faster).
-* Expert: [Improving SSL performance][18]
+* Expert: [Improving SSL performance][19]
 
-[14]: http://www.westphahl.net/blog/2012/01/03/setting-up-https-with-nginx-and-startssl/
-[15]: https://wiki.mozilla.org/Security/Server_Side_TLS
-[16]: http://blog.cloudflare.com/staying-on-top-of-tls-attacks
-[17]: http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/
-[18]: https://www.imperialviolet.org/2010/06/25/overclocking-ssl.html
+[15]: http://www.westphahl.net/blog/2012/01/03/setting-up-https-with-nginx-and-startssl/
+[16]: https://wiki.mozilla.org/Security/Server_Side_TLS
+[17]: http://blog.cloudflare.com/staying-on-top-of-tls-attacks
+[18]: http://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/
+[19]: https://www.imperialviolet.org/2010/06/25/overclocking-ssl.html
