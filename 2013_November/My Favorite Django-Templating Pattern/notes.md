@@ -1,5 +1,6 @@
-Presentation by Anton Pirker
-See [Anton's Blog Post][1]
+# by Anton Pirker
+
+* See [Anton's Blog Post][1]
 
 [1]: http://anton-pirker.at/django-override-block-that-was-in-included-in-parent-template/
 

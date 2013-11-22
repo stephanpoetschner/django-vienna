@@ -1,4 +1,4 @@
-# Practical SSL for web devs
+# Practical SSL for web devs by Stephan Pötschner
 
 Disclaimer: I am no security expert. Any improvements/recommendations highly appreciated.
 
@@ -39,7 +39,7 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
 * Run [Qualsys SSL lab test][6].
 * Customize [Django-Settings][7].
     * `SECURE_PROXY_SSL_HEADER`: making `request.is_secure()` work.
-    
+
             SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     * Set `SESSION_COOKIE_SECURE` and `CSRF_COOKIE_SECURE` to `True`.
@@ -72,9 +72,9 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
 * If you are providing an API, your mobile applications might not automatically
   follow your graceful redirects from HTTP to HTTPS.
 * Compression might/should be disabled due to possible information leakage.
-    * SSL compression should be disabled: [CRIME attack][10]. Protecting your session cookie. 
+    * SSL compression should be disabled: [CRIME attack][10]. Protecting your session cookie.
       nginx disables [SSL compression by default][11].
-    * HTTP compression should also be disabled – [following your Django advice][12]. 
+    * HTTP compression should also be disabled – [following your Django advice][12].
       This will protect your CSRF tokens.
 * Using Server Name Indication (SNI – SSL without dedicated IP address)
   will work for [Android][13] 2.3+ – except when mobile developers use Apache HTTP Client library.
@@ -115,7 +115,7 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
         ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-RC4-SHA:
             ECDHE-RSA-AES128-SHA:AES128-GCM-SHA256:RC4:HIGH:
             !MD5:!aNULL:!EDH:!CAMELLIA;
-        
+
 * Expert: [Overview – RSA and Elliptic Curve Cryptography][18]
     * breaking 228-bit RSA key: energy of boiling teaspoon of water.
     * breaking 228-bit ECC key: energy of boiling all water on earth.
