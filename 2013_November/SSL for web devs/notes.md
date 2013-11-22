@@ -85,8 +85,8 @@ Disclaimer: I am no security expert. Any improvements/recommendations highly app
     * Use [`requests`-library][14]! (`verify=True` (default) or at least manually add certificate to trust chain!)
 
 [10]: http://security.stackexchange.com/questions/19911/crime-how-to-beat-the-beast-successor
-[11]: https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
-[12]: http://nginx.org/en/CHANGES
+[11]: http://nginx.org/en/CHANGES
+[12]: https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
 [13]: http://developer.android.com/training/articles/security-ssl.html
 [14]: http://www.python-requests.org/en/latest/
 
