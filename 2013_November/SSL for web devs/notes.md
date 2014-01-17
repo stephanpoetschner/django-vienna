@@ -1,4 +1,6 @@
-# Practical SSL for web devs by Stephan Pötschner
+# Practical SSL for web devs 
+
+*speaker:* [Stephan Pötschner](http://stephan-poetschner.at)
 
 Disclaimer: I am no security expert. Any improvements/recommendations highly appreciated.
 
