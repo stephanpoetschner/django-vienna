@@ -1,4 +1,5 @@
-# by Anton Pirker
+# Django-Templating Pattern
+*speaker:* by Anton Pirker
 
 * See [Anton's Blog Post][1]
 

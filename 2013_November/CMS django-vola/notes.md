@@ -1,4 +1,6 @@
-# by Patrick Kranzlmüller
+# Django Vola
+
+*speaker:* Patrick Kranzlmüller
 
 * Releasing their inhouse CMS. Named after [Luis Vola][1]
 * Giving a quick overview of the functionality of Django-Vola.

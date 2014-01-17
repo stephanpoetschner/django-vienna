@@ -1,4 +1,6 @@
-# by Florian Demmer
+# Patterns & Existing Solutions for Translatable DB Content
+
+*speaker:* Florian Demmer
 
 Slides at http://slid.es/fdemmer/django-friends_2013-11-21
 
