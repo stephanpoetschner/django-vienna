@@ -1,3 +1,3 @@
 # Docker-Py
 
-*speaker:* Dražen Lučanin
+*speaker:* [Dražen Lučanin](http://epska.org/)
