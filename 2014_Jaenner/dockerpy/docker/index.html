@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Docker-py</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    
+        <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+    
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css" id="highlight-theme">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <div class="slides">
+
+                
+                    
+                        
+    <section data-markdown data-separator="\n---\n">
+
+# docker-py
+
+![whale](img/docker.png)
+
+Dražen Lučanin
+
+---
+
+## What's [docker](http://www.docker.io)?
+
+> an open source project to pack, ship and run any application
+> as a lightweight container
+
+- manager for (Linux) containers
+- like virtualisation, but:
+  - no hardware emulation
+  - fast
+
+---
+
+# BAM!
+
+```shell
+$ docker run -i -t ubuntu bash
+root@6b5542600661:/#
+```
+
+---
+
+## Images
+
+- [image registry](https://index.docker.io/)
+
+```shell
+$ docker commit <container_id> myname/kickassapp
+$ docker push myname/kickassapp
+```
+
+- Dockerfile - build it yourself
+
+```
+FROM ubuntu
+
+RUN apt-get install -y python-lxml python-imaging python-jinja2 git make
+RUN git clone https://github.com/pagekite/Mailpile.git
+ADD start.sh /start.sh
+
+CMD ./start.sh
+
+EXPOSE 33411
+```
+
+---
+
+## Why should I use it?
+
+- true sandboxing (>virtualenv)
+- crazy deployment possibilities (think Lego)
+- create your own Heroku
+ - [dokku](https://github.com/progrium/dokku), [flynn](https://flynn.io/)
+
+---
+
+## [docker-py](https://github.com/dotcloud/docker-py)
+
+- docker daemon offers an API
+- docker-py = Python API wrapper
+- fairly well-maintained
+- why should I use it?
+
+---
+
+# #automate all the things
+
+---
+
+## My use-case: [Cloudfleet](https://cloudfleet.io/)
+
+![cloudfleet](img/cloudfleet.png)
+
+- home server for easy hosting of essential internet services
+
+- docker containers - on-premise software demo
+
+---
+
+## docker-py example
+
+    import docker
+    c = docker.Client(base_url='http://localhost:4444',
+                      version='1.6',
+                      timeout=10)
+    container = c.create_container('kermit/hellonode',
+                                    name='mycontainer',
+                                    ports=[1337])
+    c.start(container, publish_all_ports=True)
+
+---
+
+## Impressions
+
+- bugs
+  - [stop hangs](https://github.com/dotcloud/docker/issues/1300)
+  - [ports not exposed](https://github.com/dotcloud/docker-py/issues/141)
+- no remote API auth (yet)
+  - SSH tunneling
+  - self-signed HTTPS certificates
+- great when it works
+- very promising!
+  - docker 1.0 coming soon
+  - a very active open source project
+
+---
+
+## Thanks!
+
+Slides: [bit.ly/1aGp6uh](http://bit.ly/1aGp6uh)
+
+Dražen Lučanin
+[@kermit666](https://twitter.com/kermit666)
+
+</section>
+
+
+                    
+                    
+                
+                    
+                        
+    <section  ></section>
+
+
+                    
+                    
+                
+            </div>
+
+        </div>
+
+        <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+        <script src="bower_components/reveal.js/js/reveal.min.js"></script>
+        <script>
+            // Configure Reveal
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme || 'solarized', // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    //{ src: 'bower_components/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+                    { src: 'js/loadhtmlslides.js', condition: function() { return !!document.querySelector( '[data-html]' ); } }
+                ]
+            });
+        </script>
+
+    </body>
+
+</html>
