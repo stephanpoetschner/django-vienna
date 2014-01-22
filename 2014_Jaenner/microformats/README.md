@@ -2,4 +2,4 @@
 
 *speaker:* Benedikt Breinbauer
 
-[slides](Microformats_Lightning_Talk.pdf)
+[slides](Microformats_Lightning_Talk.pdf?raw=true)
