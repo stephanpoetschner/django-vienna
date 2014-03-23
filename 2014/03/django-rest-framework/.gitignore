@@ -6,9 +6,7 @@
 local_settings.py
 db.sqlite3
 initial_data
-src/media/*.jpg
-src/media/*.png
-src/media/*.gif
+src/media/book_images/*
 src/static/*.jpg
 src/static/*.png
 src/static/*.gif
