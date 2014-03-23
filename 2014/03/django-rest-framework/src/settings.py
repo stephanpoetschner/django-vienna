@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'rest_framework',
     'debug_toolbar',
+    'django_filters',
 
     # project specific apps
     'demo1',
@@ -123,6 +124,8 @@ TEMPLATE_DIRS = (
 # REST Framework settings
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework.filters.DjangoFilterBackend',),
     #'DEFAULT_PERMISSION_CLASSES': (
     #    'rest_framework.permissions.IsAdminUser',),
     'DEFAULT_RENDERER_CLASSES': (
