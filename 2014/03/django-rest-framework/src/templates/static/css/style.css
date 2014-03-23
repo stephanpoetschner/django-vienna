@@ -1,0 +1,68 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: #eee;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 48px;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 28px;
+}
+
+#wrapper {
+    width: 920px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+
+    box-shadow: 0px 0px 5px #999;
+    -moz-box-shadow: 0px 0px 5px #999;
+    -webkit-box-shadow: 0px 0px 5px #999;
+}
+
+article figure {
+    float: right;
+    margin: 0px 0px 5px 10px;
+}
+
+.tiles figure {
+    float: left;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px #ddd;
+    -moz-box-shadow: 0px 0px 5px #ddd;
+    -webkit-box-shadow: 0px 0px 5px #ddd;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.tiles figure:hover {
+    box-shadow: 0px 0px 5px #999;
+    -moz-box-shadow: 0px 0px 5px #999;
+    -webkit-box-shadow: 0px 0px 5px #999;
+}
+
+.tiles:after {
+    content: ' ';
+    clear: both;
+    display: block;
+    overflow: hidden;
+    height: 0px;
+}

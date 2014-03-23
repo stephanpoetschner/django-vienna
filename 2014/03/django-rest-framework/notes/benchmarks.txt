@@ -1,0 +1,82 @@
+queryset = Book.objects.all()
+-----------------------------
+
+Server Software:        WSGIServer/0.1
+Server Hostname:        localhost
+Server Port:            8000
+
+Document Path:          /demo2/books/
+Document Length:        679 bytes
+
+Concurrency Level:      10
+Time taken for tests:   79.193 seconds
+Complete requests:      1000
+Failed requests:        0
+Write errors:           0
+Total transferred:      889000 bytes
+HTML transferred:       679000 bytes
+Requests per second:    12.63 [#/sec] (mean)
+Time per request:       791.934 [ms] (mean)
+Time per request:       79.193 [ms] (mean, across all concurrent requests)
+Transfer rate:          10.96 [Kbytes/sec] received
+
+Connection Times (ms)
+min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:   474  790  85.1    787    1114
+Waiting:      474  782  84.1    779    1112
+Total:        474  790  85.1    787    1114
+
+Percentage of the requests served within a certain time (ms)
+50%    787
+66%    823
+75%    844
+80%    860
+90%    897
+95%    936
+98%    970
+99%    992
+100%   1114 (longest request)
+
+
+
+
+
+queryset = Book.objects.all().prefetch_related('authors')
+
+Server Software:        WSGIServer/0.1
+Server Hostname:        localhost
+Server Port:            8000
+
+Document Path:          /demo2/books/
+Document Length:        679 bytes
+
+Concurrency Level:      10
+Time taken for tests:   50.951 seconds
+Complete requests:      1000
+Failed requests:        0
+Write errors:           0
+Total transferred:      889000 bytes
+HTML transferred:       679000 bytes
+Requests per second:    19.63 [#/sec] (mean)
+Time per request:       509.511 [ms] (mean)
+Time per request:       50.951 [ms] (mean, across all concurrent requests)
+Transfer rate:          17.04 [Kbytes/sec] received
+
+Connection Times (ms)
+min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   233  508  80.3    506     848
+Waiting:      225  494  79.8    492     844
+Total:        233  508  80.3    506     848
+
+Percentage of the requests served within a certain time (ms)
+50%    506
+66%    537
+75%    560
+80%    572
+90%    612
+95%    649
+98%    683
+99%    722
+100%    848 (longest request)

@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Book List</h1>
+{% if results %}
+    {% for book in results %}
+        <section>
+            <h3>{{ book.title }}</h3>
+            <dl>
+                <dt>Created by:</dt>
+                <dd>{{ book.created_by }}</dd>
+                {% if book.authors %}
+                    <dt>Author(s):</dt>
+                    <dd>{{ book.authors }}</dd>
+                {% endif %}
+            </dl>
+        </section>
+    {% endfor %}
+{% else %}
+    <p>No books available.</p>
+{% endif %}
+{% endblock %}

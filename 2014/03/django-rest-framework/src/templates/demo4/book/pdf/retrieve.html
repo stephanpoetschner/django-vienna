@@ -1,0 +1,13 @@
+{% extends "layouts/base_pdf.html" %}
+{% load media %}
+
+{% block content %}
+<article>
+    <figure>{{ main|image }}</figure>
+    <h1>{{ title }}</h1>
+    <p>{{ abstract }}</p>
+</article>
+<aside>
+    {% include "demo4/_includes/review_list.html" with items=reviews %}
+</aside>
+{% endblock %}

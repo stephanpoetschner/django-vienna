@@ -1,0 +1,11 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<article>
+    <h1>{{ title }}</h1>
+    <p>{{ abstract }}</p>
+</article>
+<aside>
+    <p><a href="{% url 'book-list' %}?format=html">Back to book list</a></p>
+</aside>
+{% endblock %}

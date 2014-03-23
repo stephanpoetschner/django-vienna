@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+{% load media %}
+
+{% block content %}
+<article>
+    <h1>{{ title }}</h1>
+    <figure>
+        {{ main|image }}
+    </figure>
+    <p>{{ abstract }}</p>
+</article>
+<aside>
+  {% include "demo4/_includes/review_list.html" with items=reviews %}
+</aside>
+<footer>
+    <p>
+        <a href="{{ url }}?format=pdf">Fact Sheet (PDF)</a> | 
+        <a href="{% url 'book-list' %}?format=html">Back to book list</a>
+    </p>
+</footer>
+{% endblock %}

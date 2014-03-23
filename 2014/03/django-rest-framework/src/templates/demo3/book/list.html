@@ -1,0 +1,14 @@
+{% extends "layouts/base_pdf.html" %}
+
+{% block content %}
+<h1>Book List</h1>
+{% if results %}
+    {% for book in results %}
+        <section>
+            <h3><a href="{{ book.url }}?format=html">{{ book.title }}</a></h3>
+        </section>
+    {% endfor %}
+{% else %}
+    <p>No books available.</p>
+{% endif %}
+{% endblock %}

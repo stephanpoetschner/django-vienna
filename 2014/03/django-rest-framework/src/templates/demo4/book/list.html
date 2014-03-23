@@ -1,0 +1,20 @@
+{% extends "layouts/base.html" %}
+{% load media %}
+
+{% block content %}
+<h1>Book List</h1>
+{% if results %}
+  <div class="tiles">
+  {% for book in results %}
+    <figure>
+      {{ book.thumb|image }}
+      <figcaption>
+        <a href="{{ book.url }}?format=html">{{ book.title }}</a>
+      </figcaption>
+    </figure>
+  {% endfor %}
+  </div>
+{% else %}
+    <p>No books available.</p>
+{% endif %}
+{% endblock %}
