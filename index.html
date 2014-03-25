@@ -55,8 +55,8 @@
 					<h2>.me</h2>
 					<ul>
 						<li>python dev</li>
-            <li><a href="http://wienfluss.net">http://wienfluss.net</a></li>
-						<li>django/plone</li>
+            <li><a href="http://wienfluss.net">wienfluss.net</a></li>
+						<li>django/plone (e.g.: <a href="http://events.wien.info">events.wien.info</a>)</li>
           </ul>
 
 					<aside class="notes">
@@ -65,7 +65,6 @@
 				</section>
 
 				<section data-background="https://dl.dropboxusercontent.com/u/1074324/screenshot_events.png">
-					<h2 class="section_screenshot">events.wien.info</h2>
 				</section>
 
 				<section>
@@ -75,7 +74,7 @@
 					</blockquote>
 					<ul>
 						<li><a href="http://www.buildout.org">http://www.buildout.org</a></li>
-						<li><a href="https://pypi.python.org/pypi/zc.buildout/">pypi: zc.buildout/</a></li>
+						<li><a href="https://pypi.python.org/pypi/zc.buildout/">zc.buildout (pypi)</a></li>
 					</ul>
 
 					<aside class="notes">
@@ -83,28 +82,47 @@
 				</section>
 
 				<section>
-					<h2>buildout concept</h2>
+					<h2>why?</h2>
 					<ul>
-						<li>assemble your python project</li>
-						<li>self contained (not touching shared python installs)</li>
-						<li>repeatable (same result every time)</li>
+						<li>multiple devs</li>
+						<li>multiple environments (dev/test/prod)</li>
+						<li>different operating systems</li>
+						<li>dependency management</li>
+						<li>build consistency</li>
 					</ul>
 
 					<aside class="notes">
 					</aside>
 				</section>
 
-			  <section>
-					<h2>how we use it</h2>
-					<ul>
-						<li>project code resides in repository (mercurial)</li>
-						<li>development/staging/production</li>
-						<li></li>
-					</ul>
+        <section>
+          <h2>how?</h2>
+          <ul>
+            <li>bootstrap.py</li>
+            <li>buildout.cfg</li>
+            <li>buildout recipes</li>
+          </ul>
 
-					<aside class="notes">
-					</aside>
-				</section>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h2>example!</h2>
+          <p>
+            <a href="https://github.com/miezekatze/django-buildout-sample">
+              django-buildout-sample (github)
+            </a>
+            <ul>
+              <li>django polls project</li>
+              <li>gunicorn</li>
+              <li>nginx</li>
+              <li>supervisor</li>
+            </ul>
+          </p>
+          <aside class="notes">
+          </aside>
+        </section>
 
 				<section>
 					<section data-background="https://dl.dropboxusercontent.com/u/1074324/screenshot_git_01.png"
