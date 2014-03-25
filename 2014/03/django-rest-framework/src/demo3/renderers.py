@@ -45,13 +45,7 @@ class TemplatePDFRenderer(TemplateHTMLRenderer):
         }]
 
 
-    def render(self, data, accepted_media_type=None, renderer_context=None):
-        """
-        returns the default html output as pdf
-        """
-        content = super(TemplatePDFRenderer, self).render(
-            data, accepted_media_type, renderer_context)
-
+    def _html_to_pdf(self, content):
         content = make_absolute_paths(content)
         tempfile = NamedTemporaryFile(mode='w+b', bufsize=-1, suffix='.html',
             prefix='tmp', dir=None, delete=True)
@@ -68,3 +62,13 @@ class TemplatePDFRenderer(TemplateHTMLRenderer):
                         disable_javascript=True)
         """
         return wkhtmltopdf(pages=[tempfile.name], **options)
+
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        """
+        returns the default html output as pdf
+        """
+        content = super(TemplatePDFRenderer, self).render(
+            data, accepted_media_type, renderer_context)
+
+        return self._html_to_pdf(content)
