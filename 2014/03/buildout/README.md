@@ -5,7 +5,7 @@
 * Twitter: https://twitter.com/m_u_x
 * Github: https://github.com/miezekatze
 * *slides*: http://miezekatze.github.io/django-meetup-talk/#/
-* *code*: see ./example/
+* *code*: see [code-sample](./example/)
 
 # Notes
 
