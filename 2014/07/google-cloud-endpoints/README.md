@@ -12,4 +12,8 @@
 * Google Cloud Endpoints is an additional layer between you application and
   the user – providing the actual API by interpreting a Discovery-Document.
 * Needs Google App-Engine or Google Computing Engine as base-layer.
-* provide
+* provides interactive documentation (generates a Javascript based HTML-client for your api)
+* Toolkit will also create clients for multiple languages (python, javascript, c#, ...).
+  The same technology is used for Google's Public API.
+* SSL-only API
+* RESTful by-default
