@@ -4,7 +4,9 @@
 * Django-Freelancer
 * http://www.getaweb.at/
 * Github: https://github.com/kohout
-* *slides*: ?
+* *slides*: http://prezi.com/ohwwohhdbbqg/first-steps-in/
+* *transcript*: [./notes/transcript.txt]
+* *code*: [./code]
 
 http://www.django-rest-framework.org/
 

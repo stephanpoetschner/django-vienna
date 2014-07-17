@@ -1,0 +1,80 @@
+Transcript of First Steps in
+
+First Steps in
+Overview
+1. Short Introduction
+2. Demo App (https://github.com/kohout/drf-demo)
+3. Pitfalls, Current Problems / Discussion
+Short Introduction
+1. Usage of HTTP Methods
+Typical Approach for a Set of CRUD-Views:
+GET 
+/books/
+-> ListView
+GET/POST 
+/books/add/
+-> CreateView
+GET 
+/books/<pk>/ 
+-> DetailView
+GET/POST 
+/books/<pk>/edit/
+-> UpdateView
+GET 
+/books/<pk>/delete/
+-> DeleteView
+
+
+
+
+2. Different Representations via Request Header
+curl -X GET -H "Content-Type: 
+application/json
+" http://.../books/<pk>/
+curl -X GET -H "Content-Type: 
+text/html
+" http://.../books/<pk>/
+
+3. A lot of not-REST-specific functionalities (like throttling, permissions, ...)
+Pitfalls / Problems / Discussion
+Serializer:
+Missing 'url' Field & POST-Requests (HTTP 201 CREATED)
+Field vs. CharField
+
+Images:
+Better approach for handling images in DRF?
+How-to combine multiple Objects in a Single-Object-View
+Demo App
+Demo #1: Minimalistic REST-Example
+Demo #2: Enhanced Serializer with nested Models
+Demo #3: Create your own Formatter (PDF-Formatter)
+Demo #3: Optimizing Performance: Reduce SQL Queries
+Demo #4: Optimizing Performance: Toggle Serializer
+Demo #4: Nice integration of the django-filters package
+Benchmarks
+ab -n 1000 -c 10 http://localhost:8000/demo2/book/
+
+queryset = Book.objects.all()
+
+Requests per second: 12.63 [#/sec] (mean)
+Time per request: 791.934 [ms] (mean)
+Time per request: 79.193 [ms] (mean, across all concurrent requests)
+
+queryset = Book.objects.all().prefetch_related('authors')
+
+Requests per second: 19.63 [#/sec] (mean)
+Time per request: 509.511 [ms] (mean)
+Time per request: 50.951 [ms] (mean, across all concurrent requests)
+Django ReST-Framework
+Thanks for your
+attention ...
+
+Approach of DRF:
+/books/
+GET -> ListView
+POST -> CreateView
+/books/<pk>/
+GET -> DetailView
+PUT -> UpdateView
+PATCH -> UpdateView (partial update)
+DELETE -> DeleteView
