@@ -5,8 +5,8 @@
 * http://www.getaweb.at/
 * Github: https://github.com/kohout
 * *slides*: http://prezi.com/ohwwohhdbbqg/first-steps-in/
-* *transcript*: [./notes/transcript.txt]
-* *code*: [./code]
+* *[Transcript](./notes/transcript.txt)*
+* *[Sample Code](./src)*
 
 http://www.django-rest-framework.org/
 

@@ -1,4 +1,4 @@
-django-friends-vienna
+django-vienna
 =====================
 
 Meeting notes.
