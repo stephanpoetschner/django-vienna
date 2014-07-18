@@ -2,7 +2,7 @@
 
 * *speaker* Mark Burrett
 * Head of Mobile at [PocketScience](http://pocketscience.com/)
-* *slides*: -
+* *slides*: [PDF](./UHD_v2.pdf)
 
 # Notes
 
