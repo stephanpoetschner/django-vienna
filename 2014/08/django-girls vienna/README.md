@@ -2,7 +2,7 @@
 
 * *speaker:* [Kerstin Kollmann](kerstinkollmann.com)
 * Student, Tech-Event Organizer
-* *slides*: ?
+* *slides*: https://speakerdeck.com/kerstin/django-girls-vienna
 
 ## Notes
 
