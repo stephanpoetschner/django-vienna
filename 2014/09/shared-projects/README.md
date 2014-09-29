@@ -2,7 +2,7 @@
 
     * *speaker:* Roland Angerer
 * Django Developer, yelster GmbH 
-* *slides*: 
+* *slides*: http://slideviewer.herokuapp.com/gist/rangerer/e19d5f8e37fe6ce61866#/
 
 
 ## Notes
