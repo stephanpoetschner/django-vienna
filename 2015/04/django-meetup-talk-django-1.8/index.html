@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+			.grey {
+				color: #999;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Django 1.8</h1>
+					<h3>The hot new suff</h3>
+					<br/><br/>
+					<p>
+						<small><a href="http://www.anton-pirker.at">Anton Pirker</a> for <a href="http://www.meetup.com/Django-Vienna/">Django Meetup Vienna</a>, April 2015</small>
+					</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Facts
+
+					* Released April 1st, 2015
+					* Long Term Support (LTS)
+					* Python 2.7+ and 3.2+
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## It is a BIG release
+						### the release notes include:
+
+						* 126 new features
+						* 58 backwards incompatible changes
+						* 56 deprecated features
+						* 27 removed features
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## New features
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Multiple template engine support
+					* Built in: Django, Jinja2
+					* One project can have multiple template engines
+
+					<br/><br/>
+					<small class="grey">new features 1 - 6</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## New datatypes
+					* UUIDField (native Postgres 'uuid' data type)
+					* DurationField (native Postgres 'interval' data type)
+
+					<br/><br/>
+					<small class="grey">new features 2 - 6</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Module for Postgres specific features
+
+					ArrayField, HStoreField, Range Fields, and unaccent lookup
+
+					<small><a href="https://docs.djangoproject.com/en/1.8/ref/contrib/postgres/" target="_blank">https://docs.djangoproject.com/en/1.8/ref/contrib/postgres/</a></small>
+
+					<br/><br/>
+					<small class="grey">new features 3 - 6</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Query Expressions
+					<pre><code class="django">
+						# How many chairs are needed for
+						# each company to seat all employees?
+						company = Company.objects.filter(
+						    num_employees__gt=F('num_chairs')).annotate(
+						    chairs_needed=F('num_employees') - F('num_chairs')).first()
+
+						company.num_employees
+						# 120
+
+						company.num_chairs
+						# 50
+
+						company.chairs_needed
+						# 70
+					</code></pre>
+
+					<small><a href="https://docs.djangoproject.com/en/1.8/ref/models/expressions/" target="_blank">https://docs.djangoproject.com/en/1.8/ref/models/expressions/</a></small>
+
+					<br/><br/>
+					<small class="grey">new features 4 - 6</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Conditional expressions
+
+					let you use if ... elif ... else logic within filters, annotations, aggregations, and updates
+
+					<pre><code class="django">
+					# Get the discount for each Client based on the account type
+					Client.objects.annotate(
+					     discount=Case(
+					         When(account_type=Client.GOLD, then=Value('5%')),
+					         When(account_type=Client.PLATINUM, then=Value('10%')),
+					         default=Value('0%'),
+					         output_field=CharField(),
+					     ),
+					).values_list('name', 'discount')
+
+					# [('Jane Doe','0%'), ('James Smith','5%'), ('Jack Black','10%')]
+					</code></pre>
+
+					<small><a href="https://docs.djangoproject.com/en/1.8/ref/models/conditional-expressions/" target="_blank">https://docs.djangoproject.com/en/1.8/ref/models/conditional-expressions/</a></small>
+
+					<br/><br/>
+					<small class="grey">new features 5 - 6</small>
+					</script>
+				</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+					## Database functions
+
+					* Coalesce
+					* Concat
+					* Length
+					* Lower / Upper
+					* Substr
+
+					<small><a href="https://docs.djangoproject.com/en/1.8/ref/models/database-functions/" target="_blank">https://docs.djangoproject.com/en/1.8/ref/models/database-functions/</a></small>
+
+					<br/><br/>
+					<small class="grey">new features 6 - 6</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Database functions
+
+					* Coalesce
+					* Concat
+					* Length
+					* Lower / Upper
+					* Substr
+
+					<small><a href="https://docs.djangoproject.com/en/1.8/ref/models/database-functions/" target="_blank">https://docs.djangoproject.com/en/1.8/ref/models/database-functions/</a></small>
+
+					<br/><br/>
+					<small class="grey">new features 6 - 6</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Deprecated
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Url patterns
+
+					Old way:
+					<pre><code class="django">
+					urlpatterns = patterns('',
+					    url('^$', 'myapp.views.myview'),
+					    url('^other/$', 'myapp.views.otherview'),
+					)
+
+					urlpatterns = patterns('myapp.views',
+					    url('^$', 'myview'),
+					    url('^other/$', 'otherview'),
+					)
+					</code></pre>
+
+					New way:
+
+					<pre><code class="django">
+					from django.conf.urls import url
+					from myapp import views
+
+					urlpatterns = [
+					    url('^$', views.myview),
+					    url('^other/$', views.otherview),
+					]
+					</code></pre>
+
+					<br/><br/>
+					<small class="grey">deprecated 1 - 3</small>
+					</script>
+				</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+					## Template config
+
+					Instead of
+
+					<pre><code class="django">
+					TEMPLATE_DIRS = ...
+					TEMPLATE_LOADERS = ...
+					TEMPLATE_CONTEXT_PROCESSORS = ...
+					</code></pre>
+
+					Use this now
+
+					<pre><code class="django">
+					TEMPLATES = [
+					    {
+					        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+					        'APP_DIRS': True,
+					    },
+					]
+					</code></pre>
+
+					<small><a href="https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-TEMPLATES" target="_blank">https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-TEMPLATES</a></small>
+
+					<br/><br/>
+					<small class="grey">deprecated 2 - 3</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## {% ssi %} template tags
+
+					Replace with
+
+					<pre><code class="django">
+						{% include "foo/bar.html" %}
+
+					</code></pre>
+
+					<small><a href="https://docs.djangoproject.com/en/1.8/ref/templates/builtins/#include" target="_blank">https://docs.djangoproject.com/en/1.8/ref/templates/builtins/#include</a></small>
+
+					<br/><br/>
+					<small class="grey">deprecated 3 - 3</small>
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Removed
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+					## Removed
+
+					* django.contrib.comments
+					* TransactionMiddleware
+					* Support for the Python Imaging Library (PIL) module is removed
+					* The session key django_language is no longer read for backwards compatibility.
+					* CACHE_MIDDLEWARE_ANONYMOUS_ONLY
+
+					<br/><br/>
+					<small class="grey">removed ✝</small>
+					</script>
+				</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+					## Finito
+					<br/>
+					#### Download Django 1.8:
+					<small><a href="https://www.djangoproject.com/download/">www.djangoproject.com/download</a></small>
+
+					#### Release notes:
+					<small><a href="https://docs.djangoproject.com/en/1.8/releases/1.8/">https://docs.djangoproject.com/en/1.8/releases/1.8/</a></small>
+
+					#### Slides:
+					<small><a href="https://github.com/antonpirker/django-meetup-talk-django-1.8">https://github.com/antonpirker/django-meetup-talk-django-1.8</a></small>
+
+					<br/><br/>
+					<small class="grey">anton@ignaz.at, April 2015</small>
+					</script>
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
